@@ -1,0 +1,22 @@
+/**
+ * Hash map solution
+ * - Loop through the numbers
+ * - If the map has the target - current number (complement), return from map and current
+ * - Else set the current number by index for later
+ * - Empty return if nothing is found
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function (nums, target) {
+  const seen = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (seen.has(complement)) {
+      return [seen.get(complement), i];
+    }
+    seen.set(nums[i], i);
+  }
+  return [];
+};
